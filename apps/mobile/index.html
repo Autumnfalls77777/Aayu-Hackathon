@@ -3,58 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0F766E">
+    <meta name="theme-color" content="#FAF7F2">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>SASTI DAWAI - Find Affordable Medicines</title>
     <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <svg class="splash-pill" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <rect x="8" y="24" width="48" height="16" rx="8" fill="#8B6F47"/>
+                    <path d="M32 24 L56 24 A8 8 0 0 1 56 40 L32 40 Z" fill="#C4A87C"/>
+                    <line x1="32" y1="24" x2="32" y2="40" stroke="#FAF7F2" stroke-width="2"/>
+                </svg>
+            </div>
+            <h1 class="splash-title">SASTI DAWAI</h1>
+            <p class="splash-tagline">Find exact lower-cost alternatives</p>
+            <div class="splash-loader">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="app">
         <!-- Home Screen -->
         <div id="home-screen" class="screen active">
-            <div class="home-header">
-                <div class="logo">
-                    <span class="logo-icon">💊</span>
-                    <h1>SASTI DAWAI</h1>
+            <div class="home-hero">
+                <div class="hero-content">
+                    <div class="hero-icon">
+                        <svg width="48" height="48" viewBox="0 0 64 64" fill="none">
+                            <rect x="8" y="24" width="48" height="16" rx="8" fill="#8B6F47"/>
+                            <path d="M32 24 L56 24 A8 8 0 0 1 56 40 L32 40 Z" fill="#C4A87C"/>
+                            <line x1="32" y1="24" x2="32" y2="40" stroke="#FAF7F2" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h1 class="hero-title">SASTI DAWAI</h1>
+                    <p class="hero-subtitle">Find exact lower-cost alternatives to your medicines</p>
                 </div>
-                <p class="tagline">Find exact lower-cost alternatives to your medicines</p>
+                <div class="hero-decoration"></div>
             </div>
+
             <div class="home-actions">
-                <button class="btn btn-primary btn-scan" onclick="showScreen('scan-screen')">
-                    <span class="btn-icon">📷</span>
-                    <span class="btn-text">Scan Medicine</span>
+                <button class="btn-primary" onclick="showScreen('scan-screen')">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                        <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    <span>Scan Medicine</span>
                 </button>
-                <button class="btn btn-secondary" onclick="showScreen('search-screen')">
-                    <span class="btn-icon">🔍</span>
-                    <span class="btn-text">Search Medicine</span>
+                <button class="btn-secondary" onclick="showScreen('search-screen')">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <span>Search Medicine</span>
                 </button>
             </div>
+
+            <div class="home-categories">
+                <h3 class="section-title">Browse by Category</h3>
+                <div class="category-grid">
+                    <div class="category-card" onclick="searchCategory('diabetes')">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M2 12h20"/>
+                            <circle cx="12" cy="12" r="10"/>
+                        </svg>
+                        <span class="category-name">Diabetes</span>
+                    </div>
+                    <div class="category-card" onclick="searchCategory('blood pressure')">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <span class="category-name">Blood Pressure</span>
+                    </div>
+                    <div class="category-card" onclick="searchCategory('fever')">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                        </svg>
+                        <span class="category-name">Fever & Pain</span>
+                    </div>
+                    <div class="category-card" onclick="searchCategory('stomach')">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
+                        </svg>
+                        <span class="category-name">Stomach</span>
+                    </div>
+                    <div class="category-card" onclick="searchCategory('cholesterol')">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span class="category-name">Cholesterol</span>
+                    </div>
+                    <div class="category-card" onclick="searchCategory('antibiotic')">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                        </svg>
+                        <span class="category-name">Antibiotics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-recent" id="recent-section" style="display:none;">
+                <h3 class="section-title">Recent Scans</h3>
+                <div class="recent-list" id="recent-list"></div>
+            </div>
+
             <div class="home-info">
                 <div class="info-card">
                     <h3>How it works</h3>
-                    <ol>
-                        <li>Scan your medicine strip or box</li>
-                        <li>We identify the salt, strength & form</li>
-                        <li>Find exact Jan Aushadhi equivalents</li>
-                        <li>See potential savings</li>
-                    </ol>
+                    <div class="info-steps">
+                        <div class="info-step">
+                            <span class="step-number">1</span>
+                            <span>Scan your medicine strip or box</span>
+                        </div>
+                        <div class="info-step">
+                            <span class="step-number">2</span>
+                            <span>We identify the salt, strength & form</span>
+                        </div>
+                        <div class="info-step">
+                            <span class="step-number">3</span>
+                            <span>Find exact Jan Aushadhi equivalents</span>
+                        </div>
+                        <div class="info-step">
+                            <span class="step-number">4</span>
+                            <span>See potential savings</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Scan Screen -->
         <div id="scan-screen" class="screen">
-            <div class="scan-header">
-                <button class="btn-back" onclick="showScreen('home-screen')">← Back</button>
+            <div class="page-header">
+                <button class="btn-back" onclick="showScreen('home-screen')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"/>
+                        <polyline points="12 19 5 12 12 5"/>
+                    </svg>
+                </button>
                 <h2>Scan Medicine</h2>
             </div>
             <div class="scan-container">
                 <div class="camera-viewport" id="camera-viewport">
                     <video id="camera-video" autoplay playsinline></video>
-                    <div class="scan-frame">
-                        <div class="scan-line"></div>
+                    <div class="scan-overlay">
+                        <div class="scan-frame">
+                            <div class="corner top-left"></div>
+                            <div class="corner top-right"></div>
+                            <div class="corner bottom-left"></div>
+                            <div class="corner bottom-right"></div>
+                            <div class="scan-line"></div>
+                        </div>
                     </div>
                     <div class="scan-instructions">
                         <p>Position the medicine strip within the frame</p>
@@ -62,13 +172,20 @@
                     </div>
                 </div>
                 <div class="scan-controls">
-                    <button class="btn btn-capture" id="capture-btn" onclick="captureImage()">
-                        <span class="capture-icon">📸</span>
-                        Capture
+                    <button class="btn-capture" id="capture-btn" onclick="captureImage()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                        <span>Capture</span>
                     </button>
-                    <button class="btn btn-upload" onclick="document.getElementById('file-input').click()">
-                        <span class="upload-icon">📁</span>
-                        Upload
+                    <button class="btn-upload" onclick="document.getElementById('file-input').click()">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        <span>Upload</span>
                     </button>
                     <input type="file" id="file-input" accept="image/*" capture="environment" style="display:none" onchange="handleFileUpload(event)">
                 </div>
@@ -78,23 +195,52 @@
         <!-- Analyzing Screen -->
         <div id="analyzing-screen" class="screen">
             <div class="analyzing-container">
-                <div class="spinner"></div>
+                <div class="analyzing-icon">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
                 <h2>Reading medicine...</h2>
                 <div class="analysis-steps">
                     <div class="step" id="step-text">
-                        <span class="step-icon">✓</span>
+                        <span class="step-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </span>
                         <span>Text detected</span>
                     </div>
                     <div class="step" id="step-medicine">
-                        <span class="step-icon">✓</span>
+                        <span class="step-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 1 1 7-7l7 7a4.95 4.95 0 1 1-7 7Z"/>
+                                <path d="m8.5 8.5 7 7"/>
+                            </svg>
+                        </span>
                         <span>Medicine identified</span>
                     </div>
                     <div class="step" id="step-composition">
-                        <span class="step-icon">✓</span>
+                        <span class="step-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 3h6"/>
+                                <path d="M10 3v5.5L4.5 18a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8.5V3"/>
+                                <line x1="7" y1="15" x2="17" y2="15"/>
+                            </svg>
+                        </span>
                         <span>Composition verified</span>
                     </div>
                     <div class="step" id="step-matching">
-                        <span class="step-icon">✓</span>
+                        <span class="step-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
                         <span>Checking exact equivalents</span>
                     </div>
                 </div>
@@ -103,8 +249,13 @@
 
         <!-- Result Screen -->
         <div id="result-screen" class="screen">
-            <div class="result-header">
-                <button class="btn-back" onclick="showScreen('home-screen')">← Back</button>
+            <div class="page-header">
+                <button class="btn-back" onclick="showScreen('home-screen')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"/>
+                        <polyline points="12 19 5 12 12 5"/>
+                    </svg>
+                </button>
                 <h2>Result</h2>
             </div>
             <div class="result-content" id="result-content">
@@ -114,14 +265,22 @@
 
         <!-- Search Screen -->
         <div id="search-screen" class="screen">
-            <div class="search-header">
-                <button class="btn-back" onclick="showScreen('home-screen')">← Back</button>
+            <div class="page-header">
+                <button class="btn-back" onclick="showScreen('home-screen')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"/>
+                        <polyline points="12 19 5 12 12 5"/>
+                    </svg>
+                </button>
                 <h2>Search Medicine</h2>
             </div>
             <div class="search-container">
                 <div class="search-input-wrapper">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
                     <input type="text" id="search-input" placeholder="Enter medicine name..." oninput="searchMedicines(this.value)">
-                    <span class="search-icon">🔍</span>
                 </div>
                 <div class="search-results" id="search-results">
                     <!-- Dynamic results -->
@@ -131,8 +290,13 @@
 
         <!-- Medicine Detail Screen -->
         <div id="detail-screen" class="screen">
-            <div class="detail-header">
-                <button class="btn-back" onclick="showScreen('search-screen')">← Back</button>
+            <div class="page-header">
+                <button class="btn-back" onclick="showScreen('search-screen')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"/>
+                        <polyline points="12 19 5 12 12 5"/>
+                    </svg>
+                </button>
                 <h2>Medicine Details</h2>
             </div>
             <div class="detail-content" id="detail-content">
