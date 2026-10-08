@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0F766E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SASTI DAWAI - Find Affordable Medicines</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen active">
+            <div class="home-header">
+                <div class="logo">
+                    <span class="logo-icon">💊</span>
+                    <h1>SASTI DAWAI</h1>
+                </div>
+                <p class="tagline">Find exact lower-cost alternatives to your medicines</p>
+            </div>
+            <div class="home-actions">
+                <button class="btn btn-primary btn-scan" onclick="showScreen('scan-screen')">
+                    <span class="btn-icon">📷</span>
+                    <span class="btn-text">Scan Medicine</span>
+                </button>
+                <button class="btn btn-secondary" onclick="showScreen('search-screen')">
+                    <span class="btn-icon">🔍</span>
+                    <span class="btn-text">Search Medicine</span>
+                </button>
+            </div>
+            <div class="home-info">
+                <div class="info-card">
+                    <h3>How it works</h3>
+                    <ol>
+                        <li>Scan your medicine strip or box</li>
+                        <li>We identify the salt, strength & form</li>
+                        <li>Find exact Jan Aushadhi equivalents</li>
+                        <li>See potential savings</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scan Screen -->
+        <div id="scan-screen" class="screen">
+            <div class="scan-header">
+                <button class="btn-back" onclick="showScreen('home-screen')">← Back</button>
+                <h2>Scan Medicine</h2>
+            </div>
+            <div class="scan-container">
+                <div class="camera-viewport" id="camera-viewport">
+                    <video id="camera-video" autoplay playsinline></video>
+                    <div class="scan-frame">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="scan-instructions">
+                        <p>Position the medicine strip within the frame</p>
+                        <p class="scan-hint">Ensure good lighting and focus</p>
+                    </div>
+                </div>
+                <div class="scan-controls">
+                    <button class="btn btn-capture" id="capture-btn" onclick="captureImage()">
+                        <span class="capture-icon">📸</span>
+                        Capture
+                    </button>
+                    <button class="btn btn-upload" onclick="document.getElementById('file-input').click()">
+                        <span class="upload-icon">📁</span>
+                        Upload
+                    </button>
+                    <input type="file" id="file-input" accept="image/*" capture="environment" style="display:none" onchange="handleFileUpload(event)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Analyzing Screen -->
+        <div id="analyzing-screen" class="screen">
+            <div class="analyzing-container">
+                <div class="spinner"></div>
+                <h2>Reading medicine...</h2>
+                <div class="analysis-steps">
+                    <div class="step" id="step-text">
+                        <span class="step-icon">✓</span>
+                        <span>Text detected</span>
+                    </div>
+                    <div class="step" id="step-medicine">
+                        <span class="step-icon">✓</span>
+                        <span>Medicine identified</span>
+                    </div>
+                    <div class="step" id="step-composition">
+                        <span class="step-icon">✓</span>
+                        <span>Composition verified</span>
+                    </div>
+                    <div class="step" id="step-matching">
+                        <span class="step-icon">✓</span>
+                        <span>Checking exact equivalents</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <div class="result-header">
+                <button class="btn-back" onclick="showScreen('home-screen')">← Back</button>
+                <h2>Result</h2>
+            </div>
+            <div class="result-content" id="result-content">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+
+        <!-- Search Screen -->
+        <div id="search-screen" class="screen">
+            <div class="search-header">
+                <button class="btn-back" onclick="showScreen('home-screen')">← Back</button>
+                <h2>Search Medicine</h2>
+            </div>
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <input type="text" id="search-input" placeholder="Enter medicine name..." oninput="searchMedicines(this.value)">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="search-results" id="search-results">
+                    <!-- Dynamic results -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Medicine Detail Screen -->
+        <div id="detail-screen" class="screen">
+            <div class="detail-header">
+                <button class="btn-back" onclick="showScreen('search-screen')">← Back</button>
+                <h2>Medicine Details</h2>
+            </div>
+            <div class="detail-content" id="detail-content">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

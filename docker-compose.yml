@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://sasti:sasti@db:5432/sasti_dawai
+      - DEBUG=false
+    depends_on:
+      - db
+    volumes:
+      - ./data:/app/data
+
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=sasti
+      - POSTGRES_PASSWORD=sasti
+      - POSTGRES_DB=sasti_dawai
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
